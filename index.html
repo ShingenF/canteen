@@ -24,6 +24,8 @@ h1,h2,h3,p{margin:0}
 .mpbtn:hover{background:#000}
 main{max-width:1120px;margin:0 auto;padding:20px 16px 60px}
 .mp .webbar{display:none}
+.mp{scrollbar-width:none}.mp ::-webkit-scrollbar,.mp::-webkit-scrollbar{display:none}
+.hero .fl .chips{flex:1;min-width:0}
 
 /* ---------- mini program chrome ---------- */
 .mpstatus,.mpnav,.tabbar{display:none}
@@ -293,7 +295,8 @@ V.home=()=>{
     <div class="filters">
       <div class="fl"><span>餐段</span>${chips('meal',[['早','早餐'],['午','午餐'],['晚','晚餐']])}</div>
       <div class="fl"><span>预算</span>${chips('budget',[[0,'不限'],[10,'≤10元'],[15,'≤15元'],[20,'≤20元']])}</div>
-      <div class="fl"><span>口味</span>${chips('taste',[['','不限'],['辣','想吃辣'],['清淡','清淡'],['面食','面食'],['米饭','米饭']])}<button class="chip ${S.noQueue?'on':''}" data-act="toggleQ">⏱ 不想排队</button></div>
+      <div class="fl"><span>口味</span>${chips('taste',[['','不限'],['辣','想吃辣'],['清淡','清淡'],['面食','面食'],['米饭','米饭']])}</div>
+      <div class="fl"><span>排队</span><div class="chips"><button class="chip ${!S.noQueue?'on':''}" data-act="toggleQ">无所谓</button><button class="chip ${S.noQueue?'on':''}" data-act="toggleQ">⏱ 不想排队</button></div></div>
     </div>
     <div class="cta"><button class="btn w" data-act="lucky">🎲 别纠结，帮我选一个</button>${MP?'':'<button class="btn k" data-act="phone">📱 打开 iPhone 真机体验小程序版</button>'}</div>
   </section>
