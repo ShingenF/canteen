@@ -95,6 +95,8 @@ main{max-width:1120px;margin:0 auto;padding:20px 16px 60px}
 .tabs{display:flex;background:#ebe6df;border-radius:12px;padding:3px;margin-bottom:14px}
 .tabs button{flex:1;padding:8px;border-radius:10px;font-weight:600;color:var(--sub)}
 .tabs button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.tile,.bigtile{overflow:hidden}.tile img,.bigtile img,.modal .em img{width:100%;height:100%;object-fit:cover;display:block}
+.bigtile{height:210px}.modal .em{height:170px;border-radius:16px;overflow:hidden;display:grid;place-items:center;background:#faf7f3;margin-bottom:10px}
 .rk{width:26px;font-weight:800;font-size:18px;color:#c9bfb5;text-align:center;flex:none}
 .rk.t{color:var(--brand)}
 .winh{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
@@ -213,7 +215,7 @@ const DISHES = [
  [9,4,'豆浆油条',4,'🥛',['清淡'],'早',4.2,310,0,[[4,['性价比高'],'油条现炸的，豆浆别放太多糖','大三·历史','2天前']]],
  [10,4,'鸡蛋灌饼',6,'🫓',['面食'],'早',4.4,18,5,[[5,['味道好'],'新上的！可以加里脊，边走边吃很方便','大一·设计','昨天']]],
  [11,5,'麻辣香锅（单人）',18,'🌶️',['辣','米饭'],'午晚',4.6,389,0,[[5,['味道好'],'微辣就很香，推荐加午餐肉和宽粉','大三·自动化','今天'],[4,['排队久'],'好吃但是饭点要排 15 分钟','大二·会计','2天前']]],
- [12,5,'番茄肥牛锅',20,'🍅',['清淡','米饭'],'午晚',4.3,31,6,[[4,['味道好'],'不能吃辣的福音，番茄汤底很浓','大一·护理','2天前']]],
+ [12,5,'寿喜肥牛锅',20,'🍲',['清淡','米饭'],'午晚',4.3,31,6,[[4,['味道好'],'不能吃辣的福音，甜口汤底配肥牛很下饭','大一·护理','2天前']]],
  [13,6,'鸡胸肉能量碗',16,'🥗',['清淡'],'午晚',4.4,142,0,[[5,['味道好'],'健身党食堂首选，鸡胸不柴','大四·体育','今天']]],
  [14,6,'牛油果虾仁沙拉',19,'🥑',['清淡'],'午晚',3.9,12,2,[[4,[],'食材新鲜，但 19 块在食堂有点贵','研一·生物','昨天'],[3,['分量少','价格虚高'],'虾只有四只……','大三·外语','今天']]],
  [15,7,'黑椒牛柳铁板饭',17,'🥩',['米饭'],'午晚',2.8,133,0,[[2,['太油','价格虚高'],'盘底一层油，牛柳全是淀粉','大二·软件','今天'],[2,['排队久'],'排了 15 分钟，上来是温的','大三·金融','2天前']]],
@@ -271,9 +273,10 @@ function whyText(d,q){const st=dishStat(d),w=WIN[d.w],c=CANTEENS[w.c];const a=[]
 }
 
 /* ================= 组件 ================= */
+const pic=d=>`<img src="img/${d.id}.jpg" alt="${d.name}" loading="lazy">`;
 function dishCard(d,o={}){const st=dishStat(d),w=WIN[d.w],c=CANTEENS[w.c],q=queue(w);
   return `<a class="card dish" href="#/dish/${d.id}">${o.rank?`<div class="rk ${o.rank<=3?'t':''}">${o.rank}</div>`:''}
-  <div class="tile">${d.em}</div><div class="bd">
+  <div class="tile">${pic(d)}</div><div class="bd">
   <h3>${d.name} ${d.newDays?'<span class="tag new">新品</span>':''}${isBadWin(w)?'<span class="tag bad">避雷窗口</span>':''}</h3>
   <div class="meta">${c.name} · ${w.name} · ${w.floor}</div>
   <div class="row" style="margin-top:4px"><span class="price"><small>¥</small>${d.price}</span><span class="rate ${rc(st.avg)}">★ ${st.avg.toFixed(1)}</span><span class="meta">${st.n} 评 · 排队 ${q} 分钟</span></div>
@@ -305,7 +308,7 @@ V.home=()=>{
   </section>
   ${bads.length?`<section class="sec"><div class="alert"><h3>⚠️ 今日避雷提醒</h3><ul>${bads.map(w=>`<li><a href="#/win/${w.id}"><b>${CANTEENS[w.c].name} · ${w.name}</b>（${winStat(w).avg.toFixed(1)} 分）：${winReasons(w).slice(0,3).join('、')}${w.trend?' · '+w.trend:''} ›</a></li>`).join('')}</ul></div></section>`:''}
   <section class="sec"><div class="sech"><h2>✨ 本周新品</h2><a href="#/new">全部 ›</a></div>
-    <div class="hscroll">${news.map(d=>{const st=dishStat(d);return `<a class="newc" href="#/dish/${d.id}"><div class="tile">${d.em}</div><h3>${d.name}</h3><div class="meta">${CANTEENS[WIN[d.w].c].name} · ¥${d.price}</div><div class="meta"><span class="rate ${rc(st.avg)}">★ ${st.avg.toFixed(1)}</span> · ${st.n} 人尝鲜</div></a>`}).join('')}</div>
+    <div class="hscroll">${news.map(d=>{const st=dishStat(d);return `<a class="newc" href="#/dish/${d.id}"><div class="tile">${pic(d)}</div><h3>${d.name}</h3><div class="meta">${CANTEENS[WIN[d.w].c].name} · ¥${d.price}</div><div class="meta"><span class="rate ${rc(st.avg)}">★ ${st.avg.toFixed(1)}</span> · ${st.n} 人尝鲜</div></a>`}).join('')}</div>
   </section>
   <section class="sec"><div class="sech"><h2>食堂实时拥挤度</h2><a href="#/canteens">去逛食堂 ›</a></div>
     <div class="card">${Object.values(CANTEENS).map(c=>{const p=crowd(c),[t,col]=crowdTxt(p);return `<a class="crowd" href="#/canteen/${c.id}"><span style="width:118px;flex:none">${c.em} ${c.name}</span><div class="bar"><i style="width:${Math.round(p*100)}%;background:${col}"></i></div><b style="color:${col}">${t}</b></a>`}).join('')}
@@ -353,7 +356,7 @@ V.dish=id=>{const d=DMAP[id];if(!d)return V.home();const w=WIN[d.w],c=CANTEENS[w
   const tagCount={};rs.forEach(r=>r.tags.forEach(t=>tagCount[t]=(tagCount[t]||0)+1));
   return `<div class="crumb"><a href="#/canteen/${c.id}">${c.name}</a> / <a href="#/win/${w.id}">${w.name}</a> / ${d.name}</div>
   <div class="detail"><div>
-   <div class="card"><div class="bigtile">${d.em}</div>
+   <div class="card"><div class="bigtile">${pic(d)}</div>
     <div class="dtitle"><div><h1>${d.name}</h1><div class="meta"><a href="#/win/${w.id}" style="color:var(--brand-d)">${c.name} · ${w.name} · ${w.floor} ›</a></div></div><div class="price" style="font-size:24px"><small>¥</small>${d.price}</div></div>
     <div class="row" style="margin-top:8px">${d.newDays?'<span class="tag new">新品 · 第 '+d.newDays+' 天</span>':''}${isBadWin(w)?'<span class="tag bad">所在窗口在黑榜</span>':''}${d.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
     <div class="stat3"><div><b class="rate ${rc(st.avg)}">${st.avg.toFixed(1)}</b><span>${st.n} 人评价</span></div><div><b>${queue(w)} 分钟</b><span>当前排队</span></div><div><b>${{早:'早',午:'午',晚:'晚'}[d.meals[0]]}${d.meals.length>1?'–'+d.meals.slice(-1):''}</b><span>供应餐段</span></div></div>
@@ -395,7 +398,7 @@ V.about=()=>`<div class="card about">
   <h2>五、后续规划</h2>
   <ul><li>接入校园卡消费流水，用真实客流替代估算的排队时间。</li><li>评价带图、「今日实拍」，解决菜品图与实物不符。</li><li>AI 一句话点餐（「15 块以内、想吃辣、不排队」）与评价自动摘要。</li><li>食堂经营方后台：差评原因看板，形成反馈闭环。</li><li>防刷机制：校园身份认证 + 消费后才可评价。</li></ul>
   <h2>六、关于这个演示</h2>
-  <p>当前为产品雏形，菜品与评价是模拟数据；你写的评价保存在本机浏览器，网页版与小程序版共享。全程使用 AI Coding 工具（Claude Code）完成设计、开发与部署。</p>
+  <p>当前为产品雏形，菜品与评价是模拟数据；你写的评价保存在本机浏览器，网页版与小程序版共享。全程使用 AI Coding 工具（Claude Code）完成设计、开发与部署。菜品照片来自 Wikimedia Commons 的自由许可图片，仅作示意，<a href="credits.html" style="color:var(--brand-d)">查看图片来源</a>。</p>
 </div>`;
 
 /* ================= 路由与渲染 ================= */
@@ -425,7 +428,7 @@ function lucky(){
   const m=document.createElement('div');m.className='modal';m.innerHTML='<div class="box"><div class="em" id="lem">🎲</div><h3 id="lname">正在帮你选…</h3><div class="meta" id="lmeta">&nbsp;</div><div id="lbtn" style="margin-top:16px"></div></div>';
   document.body.appendChild(m);m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-x]'))m.remove()});
   let i=0;const pickD=list[Math.floor(Math.random()*list.length)];
-  const tm=setInterval(()=>{const d=i<14?list[Math.floor(Math.random()*list.length)]:pickD;m.querySelector('#lem').textContent=d.em;m.querySelector('#lname').textContent=d.name;
+  const tm=setInterval(()=>{const d=i<14?list[Math.floor(Math.random()*list.length)]:pickD;m.querySelector('#lem').innerHTML=pic(d);m.querySelector('#lname').textContent=d.name;
     if(++i>14){clearInterval(tm);const w=WIN[d.w];m.querySelector('#lmeta').textContent=`${CANTEENS[w.c].name} · ${w.name} · ¥${d.price} · ★${dishStat(d).avg.toFixed(1)}`;
       m.querySelector('#lbtn').innerHTML=`<a class="btn block" data-x href="#/dish/${d.id}">就吃这个</a><button class="btn ghost block" style="margin-top:8px" data-x data-act="lucky">再选一次</button>`}},90);
 }
