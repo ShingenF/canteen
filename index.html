@@ -5,136 +5,241 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>食堂吃什么 · 校园食堂点评推荐</title>
 <style>
-:root{--brand:#ff6b35;--brand-d:#e8551f;--brand-l:#fff1ea;--bg:#f6f4f0;--card:#fff;--ink:#2b2420;--sub:#8b7f76;--line:#eee8e1;--good:#1fa971;--bad:#e5484d;--warn:#f5a623}
+:root{--brand:#ff6633;--brand-d:#f04e1a;--brand-l:#fff0ea;--bg:#f4f4f4;--card:#fff;--ink:#222;--sub:#8a8a8a;--line:#f0f0f0;--good:#12a86b;--bad:#e5484d;--warn:#f59a23;--red:#ff4d3a}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.45}
 a{color:inherit;text-decoration:none}
-button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
-h1,h2,h3,p{margin:0}
+button{font:inherit;border:0;background:none;cursor:pointer;color:inherit;padding:0}
+h1,h2,h3,h4,p{margin:0}
+img{display:block}
+.or{color:var(--brand-d)}.red{color:var(--bad)}
 
 /* ---------- web chrome ---------- */
-.webbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.webbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid #e9e9e9}
 .webbar .in{max-width:1120px;margin:0 auto;padding:0 16px;height:60px;display:flex;align-items:center;gap:18px}
 .logo{font-weight:800;font-size:19px;white-space:nowrap}.logo span{color:var(--brand)}
 .wnav{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}.wnav::-webkit-scrollbar{display:none}
-.wnav a{padding:8px 12px;border-radius:999px;color:var(--sub);white-space:nowrap;font-weight:500}
-.wnav a.on{background:var(--brand-l);color:var(--brand-d)}
-.mpbtn{background:var(--ink);color:#fff;padding:9px 16px;border-radius:999px;font-weight:600;white-space:nowrap;font-size:14px}
-.mpbtn:hover{background:#000}
-main{max-width:1120px;margin:0 auto;padding:20px 16px 60px}
+.wnav a{padding:8px 13px;border-radius:999px;color:#666;white-space:nowrap;font-weight:500;font-size:15px}
+.wnav a.on{background:var(--brand-l);color:var(--brand-d);font-weight:700}
+.mpbtn{background:#222;color:#fff;padding:9px 16px;border-radius:999px;font-weight:600;white-space:nowrap;font-size:14px}
+main{max-width:1120px;margin:0 auto;padding:16px 16px 60px}
+.web main.full{padding:0;height:calc(100vh - 61px);position:relative;overflow:hidden;background:#fff}
 .mp .webbar{display:none}
 .mp{scrollbar-width:none}.mp ::-webkit-scrollbar,.mp::-webkit-scrollbar{display:none}
-.hero .fl .chips{flex:1;min-width:0}
 
 /* ---------- mini program chrome ---------- */
 .mpstatus,.mpnav,.tabbar{display:none}
-.mp body{background:var(--bg);overflow-x:hidden}
+.mp body{overflow-x:hidden}
 .mp .mpstatus{display:flex;position:fixed;top:0;left:0;right:0;height:50px;z-index:30;background:#fff;align-items:flex-end;justify-content:space-between;padding:0 30px 6px;font-weight:600;font-size:15px}
-.mp .mpnav{display:flex;position:fixed;top:50px;left:0;right:0;height:44px;z-index:30;background:#fff;align-items:center;justify-content:center;font-weight:600;font-size:16px;border-bottom:1px solid var(--line)}
-.mpnav .back{position:absolute;left:8px;font-size:26px;width:36px;height:36px;line-height:32px}
-.capsule{position:absolute;right:10px;top:6px;height:32px;width:87px;border:1px solid #e3e3e3;border-radius:16px;display:flex;align-items:center;justify-content:space-around;font-size:15px;background:rgba(255,255,255,.7)}
+.mp .mpnav{display:flex;position:fixed;top:50px;left:0;right:0;height:44px;z-index:30;background:#fff;align-items:center;justify-content:center;font-weight:600;font-size:16px}
+.mpnav.home{justify-content:flex-start;padding-left:14px}
+.locn{font-size:16px;font-weight:700}.locn i{font-style:normal;font-size:11px;color:#999}
+.mpnav .back{position:absolute;left:8px;font-size:28px;width:36px;height:36px;line-height:30px}
+.capsule{position:absolute;right:10px;top:6px;height:32px;width:87px;border:1px solid #e6e6e6;border-radius:16px;display:flex;align-items:center;justify-content:space-around;font-size:15px;background:rgba(255,255,255,.8)}
 .capsule i{width:1px;height:18px;background:#e3e3e3}
-.mp main{padding:106px 12px 96px}
-.mp .tabbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:30;background:#fff;border-top:1px solid var(--line);padding:6px 0 26px}
-.tabbar a{flex:1;text-align:center;font-size:11px;color:var(--sub)}
-.tabbar a b{display:block;font-size:21px;line-height:1.25;font-weight:400;filter:grayscale(1);opacity:.65}
-.tabbar a.on{color:var(--brand-d)}.tabbar a.on b{filter:none;opacity:1}
+.mp main{padding:100px 10px 92px}
+.mp main.full{position:fixed;top:94px;bottom:78px;left:0;right:0;padding:0;overflow:hidden;background:#fff}
+.mp .tabbar{display:flex;position:fixed;bottom:0;left:0;right:0;height:78px;z-index:30;background:#fff;border-top:1px solid #ececec;padding-top:7px}
+.tabbar a{flex:1;text-align:center;font-size:10.5px;color:#999}
+.tabbar svg{display:block;width:24px;height:24px;margin:0 auto 2px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tabbar a.on{color:var(--brand-d);font-weight:600}.tabbar a.on svg{stroke-width:2.2}
 
-/* ---------- common ---------- */
-.sec{margin-top:26px}.sec:first-child{margin-top:0}
-.sech{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
-.sech h2{font-size:19px}.sech a,.sech button{color:var(--sub);font-size:13px}
-.mp .sech h2{font-size:17px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
-.card{background:var(--card);border-radius:16px;padding:14px;box-shadow:0 1px 2px rgba(60,40,20,.04)}
-.dish{display:flex;gap:12px;align-items:center;position:relative}
-.tile{width:68px;height:68px;border-radius:14px;display:grid;place-items:center;font-size:34px;flex:none;background:linear-gradient(135deg,#ffe9d6,#ffd3b8)}
-.dish .bd{flex:1;min-width:0}
-.dish h3{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.meta{color:var(--sub);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.price{color:var(--brand-d);font-weight:700}.price small{font-weight:500}
-.rate{font-weight:700}.rate.g{color:var(--good)}.rate.m{color:var(--warn)}.rate.b{color:var(--bad)}
-.tag{display:inline-block;font-size:11.5px;padding:1px 7px;border-radius:6px;background:#f3efe9;color:#7a6d62}
-.tag.new{background:#e9f8f0;color:var(--good);font-weight:600}
-.tag.bad{background:#fdecec;color:var(--bad)}
-.tag.hot{background:var(--brand-l);color:var(--brand-d)}
-.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.chips::-webkit-scrollbar{display:none}
-.chip{padding:6px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);white-space:nowrap;font-size:13.5px;color:#5c5048}
-.chip.on{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600}
-.btn{background:var(--brand);color:#fff;font-weight:700;padding:11px 18px;border-radius:12px}
-.btn:active{background:var(--brand-d)}
+/* ---------- cards & modules ---------- */
+.card{background:var(--card);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.mod{padding:12px}
+.modh{display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
+.modh h2{font-size:17px;font-weight:800;white-space:nowrap}
+.modh .sub{flex:1;font-size:12px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lnk{font-size:12.5px;color:var(--sub);white-space:nowrap}
+.empty{text-align:center;color:var(--sub);padding:26px 0;font-size:13px}
+.search{display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--brand);border-radius:999px;padding:8px 14px;color:#aaa;font-size:13.5px;margin-bottom:10px}
+.search input{flex:1;border:0;outline:0;font:inherit;color:var(--ink);background:none;min-width:0}
+.demo{display:flex;width:100%;align-items:center;justify-content:space-between;background:linear-gradient(90deg,#2b2420,#4a3a31);color:#fff;border-radius:12px;padding:14px 18px;margin-bottom:10px;font-size:15px}
+.demo span{opacity:.75;font-size:13px}
+.king{display:grid;grid-template-columns:repeat(5,1fr);gap:10px 0;padding:14px 4px 12px}
+.king button{font-size:12px;color:#444;text-align:center}
+.king i{display:grid;place-items:center;width:44px;height:44px;margin:0 auto 5px;border-radius:15px;font-style:normal;font-size:23px;background:#fff4ed}
+.king button:nth-child(3n+2) i{background:#eef6ff}.king button:nth-child(3n) i{background:#effaf1}
+@media(min-width:760px){.web .king{grid-template-columns:repeat(10,1fr)}}
+
+/* filter bar (compact) */
+.fbar{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin-bottom:4px}.fbar::-webkit-scrollbar{display:none}
+.pill{flex:none;padding:5px 11px;border-radius:6px;background:#f5f5f5;font-size:12.5px;color:#555;white-space:nowrap}
+.pill i{font-style:normal;font-size:10px;margin-left:3px;color:#aaa}
+.pill.on{background:var(--brand-l);color:var(--brand-d);font-weight:600}.pill.on i{color:var(--brand)}
+
+/* dish row */
+.rows{display:grid;grid-template-columns:minmax(0,1fr)}
+@media(min-width:760px){.web .rows{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 18px}.web .rows.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.drow{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);position:relative}
+.rows .drow:last-child,.mlist .drow:last-child{border-bottom:0}
+.drow .ph{width:92px;height:92px;border-radius:8px;overflow:hidden;flex:none;position:relative;background:#eee}
+.ph img,.nph img,.bph img,.fimg img,.bigph img,.wph img,.modal .em img{width:100%;height:100%;object-fit:cover}
+.cb{position:absolute;left:0;top:0;font-size:10.5px;font-weight:700;color:#fff;padding:1px 6px;border-radius:8px 0 8px 0;background:var(--brand)}
+.cb.new,.cb.good{background:var(--good)}.cb.bad{background:var(--bad)}
+.rkb{position:absolute;left:0;top:0;min-width:20px;text-align:center;font-size:12px;font-weight:800;color:#fff;padding:1px 5px;border-radius:8px 0 8px 0;background:#b9b9b9}
+.rkb.t{background:linear-gradient(135deg,#ff8a3d,#ff4d3a)}
+.drow .bd{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.drow h3{font-size:15.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.l2{display:flex;gap:8px;font-size:12px;color:#666;white-space:nowrap;overflow:hidden}
+.sc{color:var(--brand-d);font-weight:800}.sc.m{color:var(--warn)}.sc.b{color:var(--bad)}.sc.g{color:var(--brand-d)}
+.qok{color:var(--good)}
+.l3{font-size:12px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tg{display:flex;gap:4px;flex-wrap:wrap;overflow:hidden;max-height:19px}
+.tg em,.tgi{font-style:normal;font-size:10.5px;padding:0 5px;border-radius:3px;border:1px solid #e3e3e3;color:#888;line-height:16px;white-space:nowrap}
+.tg em.o{border-color:#ffd2c0;color:var(--brand-d);background:#fff7f3}.tg em.r,.tgi.r{border-color:#f8c9cb;color:var(--bad);background:#fff5f5}.tg em.g{border-color:#bfe8d4;color:var(--good);background:#f1fbf6}
+.why{font-size:11.5px;color:#8a6d4b;background:#fff8ee;border-radius:4px;padding:2px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pr{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.price{color:var(--red);font-weight:800;font-size:17px}.price small{font-size:11px;font-weight:700}
+.price.big{font-size:26px}
+.plus{width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;font-size:18px;line-height:22px;font-weight:600;text-align:center}
+.plus.on{background:#fff;color:var(--brand);box-shadow:inset 0 0 0 1.5px var(--brand);font-size:13px}
+.drow.isbad .ph img{filter:grayscale(.55)}
+.lucky{display:block;width:100%;margin-top:10px;padding:10px;border-radius:8px;background:var(--brand-l);color:var(--brand-d);font-weight:700;font-size:14px}
+
+/* 避雷 */
+.badmod{background:linear-gradient(180deg,#fff1f0 0,#fff 70px)}
+.badmod .modh h2{color:#d93025}
+.bads{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+@media(min-width:760px){.web .bads{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.badw{display:flex;gap:10px;background:#fff;border:1px solid #f9dcdc;border-radius:10px;padding:8px}
+.bph{display:flex;gap:4px;flex:none}
+.bph div{width:70px;height:92px;border-radius:6px;overflow:hidden;position:relative}
+.bph span{position:absolute;left:0;right:0;bottom:0;font-size:10px;color:#fff;padding:10px 4px 2px;background:linear-gradient(transparent,rgba(0,0,0,.72));white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.binfo{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.binfo h3{font-size:14.5px;display:flex;justify-content:space-between;gap:6px;white-space:nowrap}.binfo h3 b{color:var(--bad)}
+.quote{font-size:12px;color:#666;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.trend{font-size:11.5px;color:var(--bad)}
+
+/* 新品横滑 */
+.hscroll{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.hscroll::-webkit-scrollbar{display:none}
+.newc{flex:none;width:118px}
+.nph{height:118px;border-radius:8px;overflow:hidden;position:relative;margin-bottom:5px;background:#eee}
+.newc h3{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.newc .price{font-size:15px}
+.newc.sm{width:96px}.newc.sm .nph{height:96px}
+.nearby{display:flex;align-items:center;gap:10px;padding:12px}
+.nearby div{flex:1}.nearby p{font-size:12px;color:var(--sub)}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+
+/* 信息流 */
+.ftabs{display:flex;gap:18px;padding:8px 4px 10px;position:sticky;z-index:5;background:var(--bg)}
+.web .ftabs{top:61px}.mp .ftabs{top:94px}
+.ftabs button{font-size:15px;color:#777;position:relative;padding-bottom:5px}
+.ftabs button.on{color:var(--ink);font-weight:800;font-size:16px}
+.ftabs button.on:after{content:"";position:absolute;left:25%;right:25%;bottom:0;height:3px;border-radius:2px;background:var(--brand)}
+.feed{columns:2;column-gap:8px}
+@media(min-width:760px){.web .feed{columns:4;column-gap:12px}}
+.fc{display:block;break-inside:avoid;background:#fff;border-radius:10px;overflow:hidden;margin-bottom:8px}
+.fimg{position:relative;aspect-ratio:1/1;background:#eee}.fimg.tall{aspect-ratio:3/4}
+.fimg .loc{position:absolute;left:6px;bottom:6px;right:6px;font-size:10.5px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;z-index:1}
+.fimg:after{content:"";position:absolute;left:0;right:0;bottom:0;height:36px;background:linear-gradient(transparent,rgba(0,0,0,.35));pointer-events:none}
+.fb{padding:8px}
+.fb h4{font-size:13.5px;font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.fs{display:flex;justify-content:space-between;align-items:center;margin-top:4px}.fs .price{font-size:13px}
+.stars{color:#ff8a1f;letter-spacing:.5px;font-size:12px}.stars i{color:#ddd;font-style:normal}
+.fu{display:flex;align-items:center;gap:5px;margin-top:6px;font-size:11.5px;color:#888}
+.fu span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ava{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;color:#fff;font-size:10px;font-style:normal;flex:none}
+.like{font-size:12px;color:#999}.like.on{color:var(--red)}
+
+/* 找菜 */
+.menu{height:100%;display:flex;flex-direction:column}
+.dims{display:flex;gap:4px;padding:8px 10px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;flex:none}
+.dims button{padding:6px 14px;border-radius:999px;font-size:14px;color:#555;white-space:nowrap}
+.dims button.on{background:var(--brand);color:#fff;font-weight:700}
+.mbody{flex:1;display:flex;min-height:0}
+.side{width:86px;flex:none;background:#f6f6f6;overflow-y:auto}
+.side button{display:block;width:100%;padding:15px 6px;font-size:13.5px;color:#666;text-align:center;position:relative}
+.side small{display:block;font-size:10.5px;color:#aaa}
+.side button.on{background:#fff;color:var(--ink);font-weight:800}
+.side button.on:before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3.5px;border-radius:0 3px 3px 0;background:var(--brand)}
+.mlist{flex:1;min-width:0;overflow-y:auto;padding:0 10px 10px}
+.mh{font-size:12px;color:var(--sub);padding:10px 0 2px;position:sticky;top:0;background:#fff;z-index:2}.mh b{color:var(--ink);font-size:14px}
+.mh.warn{color:var(--bad);margin-top:6px}
+.menu .drow .ph{width:80px;height:80px}
+.cartbar{flex:none;display:flex;align-items:center;gap:10px;margin:0 10px 8px;height:46px;border-radius:23px;background:#2b2b2b;color:#fff;padding:0 4px 0 14px}
+.cart{position:relative;font-size:22px}.cart b{position:absolute;right:-8px;top:-4px;min-width:16px;height:16px;border-radius:8px;background:var(--red);font-size:10.5px;text-align:center;line-height:16px}
+.ct{flex:1;font-size:13.5px}
+.cartbar .go{background:var(--brand);height:38px;line-height:38px;padding:0 16px;border-radius:19px;font-weight:700;font-size:14px}
+.cartbar.empty0 .ct{color:#aaa;font-size:12.5px}.cartbar.empty0 .go{background:#555}
+@media(min-width:760px){.web .menu{max-width:1120px;margin:0 auto}.web .side{width:130px}.web .mlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;align-content:start}.web .mh{grid-column:1/-1}}
+
+/* 地图 */
+.mapwrap{position:absolute;inset:0;overflow:hidden;background:#eef2e4}
+.mapsvg{position:absolute;inset:0;width:100%;height:100%}
+.pin{cursor:pointer}.pin .pg{transition:transform .2s;transform-origin:0 0}.pin.sel .pg{transform:scale(1.18)}
+.legend{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.94);border-radius:8px;padding:5px 9px;font-size:11px;color:#666;display:flex;gap:9px;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.legend i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:3px}
+.drawer{position:absolute;left:0;right:0;top:0;background:#fff;border-radius:16px 16px 0 0;box-shadow:0 -4px 20px rgba(0,0,0,.14);will-change:transform}
+@media(min-width:760px){.web .drawer{left:50%;right:auto;width:460px;margin-left:-230px}}
+.dhead{padding:20px 14px 10px;touch-action:none;cursor:grab;position:relative;user-select:none}
+.grip{position:absolute;top:8px;left:50%;width:36px;height:4.5px;margin-left:-18px;border-radius:3px;background:#d8d8d8}
+.dhead h2{font-size:19px;font-weight:800}.dhead p{font-size:12.5px;color:var(--sub);margin-top:2px}
+.dh1{display:flex;align-items:center;gap:8px}.dh1 em{font-style:normal;font-size:12px;font-weight:700;padding:1px 8px;border-radius:4px}
+.dh1 .x{margin-left:auto;width:28px;height:28px;border-radius:50%;background:#f2f2f2;font-size:18px;color:#888;line-height:26px}
+.dbody{overflow-y:auto;padding:0 14px 20px}
+.dbody h4{font-size:15px;margin:16px 0 8px}.dbody h4 small{font-weight:400;color:var(--sub);font-size:12px}
+.dstat{display:grid;grid-template-columns:repeat(4,1fr);background:#fafafa;border-radius:10px;padding:10px 0;text-align:center}
+.dstat b{display:block;font-size:18px}.dstat small{font-size:10.5px;font-weight:500}.dstat span{font-size:11.5px;color:var(--sub)}
+.ddesc{font-size:13px;color:#555;margin-top:10px}
+.dwarn{margin-top:10px;background:#fff3f2;border:1px solid #f9dcdc;border-radius:8px;padding:8px 10px;font-size:12.5px;color:#b3261e}
+.cl{display:flex;width:100%;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);text-align:left}
+.cl div{flex:1}.cl b{font-size:15px}.cl p{font-size:12px;color:var(--sub)}.cl em{font-style:normal;font-weight:700;font-size:13px}
+.wl{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.wph{width:64px;height:64px;border-radius:8px;overflow:hidden;flex:none}
+.wl .bd{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.wl h3{font-size:15px;display:flex;align-items:center;gap:6px}.wl h3 b{margin-left:auto;font-size:16px}
+.wl h3 em{font-style:normal;font-size:10.5px;padding:0 5px;border-radius:3px;border:1px solid #f8c9cb;color:var(--bad);font-weight:500}
+.wl.isbad .wph img{filter:grayscale(.55)}
+
+/* 其他页面 */
+.tabs{display:flex;background:#e9e9e9;border-radius:10px;padding:3px;margin-bottom:10px}
+.tabs button{flex:1;padding:8px;border-radius:8px;font-weight:600;color:#888}
+.tabs button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.crumb{font-size:13px;color:var(--sub);margin-bottom:10px}.crumb a{color:var(--brand-d)}
+.mp .crumb{display:none}
+.detail{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+@media(min-width:860px){.web .detail{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px;align-items:start}}
+.bigph{height:230px;background:#eee}.pad{padding:12px}
+.dtitle{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.dtitle h1{font-size:21px}
+.big{font-size:28px;font-weight:800;color:var(--brand-d)}.big.m{color:var(--warn)}.big.b{color:var(--bad)}
+.stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;text-align:center}
+.stat3 div{background:#fafafa;border-radius:10px;padding:9px 4px}
+.stat3 b{display:block;font-size:18px}.stat3 span{font-size:11.5px;color:var(--sub)}
+.btn{background:var(--brand);color:#fff;font-weight:700;padding:11px 18px;border-radius:999px;font-size:15px}
 .btn.ghost{background:var(--brand-l);color:var(--brand-d)}
 .btn.block{display:block;width:100%;text-align:center}
-.empty{text-align:center;color:var(--sub);padding:30px 0}
-
-/* hero */
-.hero{background:linear-gradient(135deg,#ff7a45,#ff5a36);color:#fff;border-radius:20px;padding:20px}
-.hero h1{font-size:24px}.mp .hero h1{font-size:20px}
-.hero p{opacity:.92;font-size:13.5px;margin-top:2px}
-.hero .filters{margin-top:14px;display:grid;gap:8px}
-.hero .fl{display:flex;align-items:center;gap:8px}
-.hero .fl>span{font-size:12.5px;opacity:.9;flex:none;width:36px}
-.hero .chip{background:rgba(255,255,255,.18);border-color:transparent;color:#fff}
-.hero .chip.on{background:#fff;color:var(--brand-d)}
-.reco{position:relative}
-.reco .no{position:absolute;left:-4px;top:-6px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;border-radius:8px;padding:1px 7px;z-index:1}
-.why{margin-top:10px;padding:8px 10px;background:#faf7f3;border-radius:10px;font-size:12.5px;color:#6b5f55}
-.alert{background:#fff5f5;border:1px solid #fbdada;border-radius:16px;padding:14px}
-.alert h3{font-size:15px;color:var(--bad)}
-.alert li{margin-top:6px;font-size:13.5px}.alert ul{margin:6px 0 0;padding-left:18px}
-.hscroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}.hscroll::-webkit-scrollbar{display:none}
-.newc{flex:none;width:150px;background:#fff;border-radius:16px;padding:12px}
-.newc .tile{width:100%;height:84px;font-size:42px;margin-bottom:8px;background:linear-gradient(135deg,#e2f7ea,#c9efd9)}
-.newc h3{font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar{height:8px;border-radius:4px;background:#f0ebe4;overflow:hidden;flex:1}
-.bar i{display:block;height:100%;border-radius:4px}
-.crowd{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:13px}
-.crowd b{width:38px;text-align:right}
-.tabs{display:flex;background:#ebe6df;border-radius:12px;padding:3px;margin-bottom:14px}
-.tabs button{flex:1;padding:8px;border-radius:10px;font-weight:600;color:var(--sub)}
-.tabs button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.tile,.bigtile{overflow:hidden}.tile img,.bigtile img,.modal .em img{width:100%;height:100%;object-fit:cover;display:block}
-.bigtile{height:210px}.modal .em{height:170px;border-radius:16px;overflow:hidden;display:grid;place-items:center;background:#faf7f3;margin-bottom:10px}
-.rk{width:26px;font-weight:800;font-size:18px;color:#c9bfb5;text-align:center;flex:none}
-.rk.t{color:var(--brand)}
-.winh{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.winh h3{font-size:16px}
-.reasons{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
-.detail{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
-@media(min-width:860px){.web .detail{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start}}
-.bigtile{height:150px;border-radius:18px;display:grid;place-items:center;font-size:76px;background:linear-gradient(135deg,#ffe9d6,#ffcfae)}
-.dtitle{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-top:14px}
-.dtitle h1{font-size:22px}
-.stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;text-align:center}
-.stat3 div{background:#faf7f3;border-radius:12px;padding:10px 4px}
-.stat3 b{display:block;font-size:19px}.stat3 span{font-size:12px;color:var(--sub)}
-.rv{padding:12px 0;border-top:1px solid var(--line)}.rv:first-child{border-top:0}
-.rv .u{display:flex;justify-content:space-between;font-size:13px;color:var(--sub)}
-.stars{color:#f5a623;letter-spacing:1px}.stars i{color:#ddd5cc;font-style:normal}
-.pick{display:flex;gap:6px;font-size:32px;color:#ddd5cc;cursor:pointer;user-select:none}
-.pick span.on{color:#f5a623}
-textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit;resize:vertical;min-height:72px;background:#fcfbf9;margin:10px 0}
+.pick{display:flex;gap:6px;font-size:32px;color:#ddd;cursor:pointer;user-select:none}
+.pick span.on{color:#ff8a1f}
+.rtags{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.rtags .pill{padding:6px 12px;border-radius:999px}
+textarea{width:100%;border:1px solid #e8e8e8;border-radius:10px;padding:10px;font:inherit;resize:vertical;min-height:72px;background:#fafafa;margin:10px 0}
 textarea:focus{outline:2px solid var(--brand-l);border-color:var(--brand)}
-.crumb{font-size:13px;color:var(--sub);margin-bottom:12px}.crumb a{color:var(--brand-d)}
-.mp .crumb{display:none}
-.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:rgba(30,25,22,.92);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:99;opacity:0;transition:.25s;pointer-events:none;white-space:nowrap}
+.rv{display:block;padding:11px 0;border-top:1px solid var(--line)}.modh+.rv{border-top:0}
+.rv .u{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--sub);margin-bottom:3px}.rv .u b{color:#444;flex:1}
+.rv p{margin-top:3px;font-size:14px}
+.me{display:flex;align-items:center;gap:14px;padding:16px}
+.avab{width:56px;height:56px;border-radius:50%;background:var(--brand-l);display:grid;place-items:center;font-size:28px}
+.about{padding:16px}
+.about h2{font-size:17px;margin:20px 0 8px}.about h2:first-child{margin-top:0}
+.about p,.about li{color:#444;font-size:14px;line-height:1.65}.about ul{padding-left:20px;margin:6px 0}
+.about table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+.about td,.about th{border:1px solid #eee;padding:8px;text-align:left;vertical-align:top}.about th{background:#fafafa}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:rgba(30,30,30,.9);color:#fff;padding:9px 18px;border-radius:999px;font-size:13.5px;z-index:99;opacity:0;transition:.25s;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:60;display:grid;place-items:center;padding:20px}
-.modal .box{background:#fff;border-radius:22px;padding:24px;width:100%;max-width:320px;text-align:center}
-.modal .em{font-size:72px;line-height:1.2}
-.modal h3{font-size:20px;margin:4px 0}
-.about h2{font-size:18px;margin:22px 0 8px}.about h2:first-child{margin-top:0}
-.about p,.about li{color:#4d433c;font-size:14.5px}.about ul{padding-left:20px;margin:6px 0}
-.about table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
-.about td,.about th{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
-.about th{background:#faf7f3}
-.me{display:flex;align-items:center;gap:14px}
-.ava{width:60px;height:60px;border-radius:50%;background:var(--brand-l);display:grid;place-items:center;font-size:30px}
-.cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
-.cta .w{background:#fff;color:var(--brand-d)}
-.cta .k{background:rgba(0,0,0,.22);color:#fff}
+.modal .box{background:#fff;border-radius:18px;padding:20px;width:100%;max-width:320px;text-align:center}
+.modal .em{height:180px;border-radius:12px;overflow:hidden;background:#f3f3f3;margin-bottom:10px}
+.modal h3{font-size:19px;margin:4px 0}
+.modal.sheet{place-items:end center;padding:0}
+.modal.sheet .box{max-width:520px;border-radius:16px 16px 0 0;padding:16px 14px 30px;animation:up .22s ease-out}
+@keyframes up{from{transform:translateY(100%)}}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.opts button{padding:11px 4px;border-radius:8px;background:#f5f5f5;font-size:14px}
+.opts button.on{background:var(--brand-l);color:var(--brand-d);font-weight:700;box-shadow:inset 0 0 0 1px var(--brand)}
+.cancel{width:100%;padding:11px;color:#888}
 
 /* ---------- phone overlay ---------- */
 #phoneMask{position:fixed;inset:0;z-index:100;background:rgba(20,16,14,.82);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;overflow:hidden}
@@ -148,7 +253,7 @@ textarea:focus{outline:2px solid var(--brand-l);border-color:var(--brand)}
 .homebar{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:#111;z-index:2;pointer-events:none}
 .phoneSide{color:#fff;max-width:300px}
 .phoneSide h2{font-size:24px}.phoneSide p{opacity:.8;margin-top:8px;font-size:14.5px}
-.phoneSide ul{padding-left:18px;opacity:.9;font-size:14px}
+.phoneSide ul{padding-left:18px;opacity:.9;font-size:14px;line-height:1.8}
 .phoneSide .btn{margin-top:14px}
 .xclose{position:absolute;top:16px;right:20px;color:#fff;font-size:30px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);z-index:3}
 @media(max-width:820px){.phoneSide{display:none}}
@@ -156,7 +261,7 @@ textarea:focus{outline:2px solid var(--brand-l);border-color:var(--brand)}
 </head>
 <body>
 <div class="mpstatus"><span id="clock">9:41</span><span style="font-size:12px;letter-spacing:1px">5G ▂▄▆ 🔋</span></div>
-<div class="mpnav"><button class="back" data-act="back" id="mpback">‹</button><span id="mptitle">食堂吃什么</span><div class="capsule"><span>•••</span><i></i><span>◎</span></div></div>
+<div class="mpnav" id="mpnav"><button class="back" data-act="back" id="mpback">‹</button><span id="mptitle">食堂吃什么</span><div class="capsule"><span>•••</span><i></i><span>◎</span></div></div>
 <header class="webbar"><div class="in">
   <a class="logo" href="#/">🍚 食堂<span>吃什么</span></a>
   <nav class="wnav" id="wnav"></nav>
@@ -172,298 +277,13 @@ textarea:focus{outline:2px solid var(--brand-l);border-color:var(--brand)}
     <div class="phoneSide">
       <h2>小程序版 · 真机演示</h2>
       <p>左边是一台可以直接操作的 iPhone，里面运行的是「食堂吃什么」微信小程序版。</p>
-      <ul><li>底部 Tab 切换五个页面</li><li>点菜品进详情，可以写评价</li><li>评价数据与网页版实时互通</li></ul>
+      <ul><li>首页：推荐、今日避雷、信息流</li><li>找菜：点顶部维度，左侧栏切换</li><li>食堂：点地图标记，上拉抽屉</li><li>评价与想吃清单和网页版互通</li></ul>
       <button class="btn" data-act="phoneClose">返回网页版</button>
     </div>
   </div>
 </div>
-
-<script>
-/* ================= 模式 ================= */
-const MP = new URLSearchParams(location.search).has('mp');
-document.documentElement.classList.add(MP ? 'mp' : 'web');
-
-/* ================= 演示数据 ================= */
-const CANTEENS = {
-  1:{id:1,name:'一食堂',area:'东区宿舍旁',hours:'6:30–21:00',pop:.95,em:'🏛️',desc:'离教学楼最近，饭点最挤'},
-  2:{id:2,name:'二食堂',area:'学苑路',hours:'7:00–22:00',pop:.7,em:'🏫',desc:'品类最全，二楼人少'},
-  3:{id:3,name:'三食堂·风味餐厅',area:'西区体育馆旁',hours:'10:30–23:00',pop:.5,em:'🏮',desc:'风味窗口多，营业到最晚'}
-};
-const WIN = {
-  1:{id:1,c:1,name:'川味小炒',floor:'1F 03窗',q:8,tags:['现炒','下饭']},
-  2:{id:2,c:1,name:'兰州拉面',floor:'1F 07窗',q:6,tags:['现拉','汤头好']},
-  3:{id:3,c:1,name:'自选快餐',floor:'1F 01窗',q:3,tags:['出餐快'],warn:['菜偏凉','分量不稳定','肉少'],trend:'近 7 天差评 +38%'},
-  4:{id:4,c:1,name:'早点铺',floor:'1F 10窗',q:4,tags:['早餐','便宜']},
-  5:{id:5,c:2,name:'麻辣香锅',floor:'2F 12窗',q:12,tags:['按斤称','可拼单']},
-  6:{id:6,c:2,name:'轻食沙拉',floor:'2F 15窗',q:2,tags:['低卡','健身']},
-  7:{id:7,c:2,name:'铁板烧',floor:'1F 05窗',q:10,tags:['铁板'],warn:['太油','排队久','价格虚高'],trend:'连续 3 周口碑垫底'},
-  8:{id:8,c:2,name:'粤式烧腊',floor:'1F 08窗',q:7,tags:['招牌','限量']},
-  9:{id:9,c:3,name:'韩式拌饭',floor:'1F 02窗',q:5,tags:['石锅']},
-  10:{id:10,c:3,name:'砂锅米线',floor:'1F 06窗',q:9,tags:['现煮','暖胃']},
-  11:{id:11,c:3,name:'饺子馄饨',floor:'1F 09窗',q:4,tags:['手工','夜宵']}
-};
-// id, 窗口, 名称, 价格, emoji, 标签, 供应餐段, 基础评分, 基础评价数, 新品上架天数(0=非新品), 种子评价
-const DISHES = [
- [1,1,'回锅肉盖饭',13,'🍛',['辣','米饭'],'午晚',4.6,328,0,[[5,['味道好','分量足'],'肉片给得很实在，豆瓣酱香，米饭能干两碗','大三·土木','2天前'],[4,['味道好'],'稍微有点咸，但下饭一绝','大一·新闻','5天前']]],
- [2,1,'鱼香肉丝盖饭',11,'🥘',['辣','米饭'],'午晚',4.3,201,0,[[4,['性价比高'],'11 块能吃饱，酸甜口正宗','研一·计算机','1天前']]],
- [3,1,'藤椒鸡丁',14,'🍗',['辣','米饭'],'午晚',4.5,23,3,[[5,['味道好'],'新菜！藤椒味很冲，麻得很舒服','大二·化学','今天'],[4,['分量足'],'鸡丁比想象的多，值得试','大三·英语','昨天']]],
- [4,2,'牛肉拉面',12,'🍜',['面食'],'早午晚',4.7,512,0,[[5,['味道好','性价比高'],'全校公认的神，汤是真牛骨熬的','大四·机械','今天'],[5,['分量足'],'可以免费加面，男生也能吃饱','大二·数学','3天前']]],
- [5,2,'油泼面',10,'🍝',['面食','辣'],'午晚',4.4,187,0,[[4,['味道好'],'油泼辣子很香，面够筋道','大一·法学','4天前']]],
- [6,3,'两荤一素套餐',12,'🍱',['米饭'],'午晚',2.6,240,0,[[2,['分量少','不新鲜'],'去晚了菜都是凉的，肉只有三四片','大二·经管','今天'],[1,['分量少'],'阿姨手抖严重，同样 12 块隔壁能吃饱','大三·物理','昨天'],[3,[],'赶时间可以吃，不排队是唯一优点','研二·材料','3天前']]],
- [7,3,'红烧鸡腿',8,'🍗',['米饭'],'午晚',2.9,156,0,[[2,['不新鲜'],'鸡腿像是中午剩的回锅','大一·电气','2天前']]],
- [8,4,'鲜肉小笼包',6,'🥟',['面食'],'早',4.5,420,0,[[5,['味道好','性价比高'],'早八人的续命包，6 块一笼 8 个','大二·临床','今天']]],
- [9,4,'豆浆油条',4,'🥛',['清淡'],'早',4.2,310,0,[[4,['性价比高'],'油条现炸的，豆浆别放太多糖','大三·历史','2天前']]],
- [10,4,'鸡蛋灌饼',6,'🫓',['面食'],'早',4.4,18,5,[[5,['味道好'],'新上的！可以加里脊，边走边吃很方便','大一·设计','昨天']]],
- [11,5,'麻辣香锅（单人）',18,'🌶️',['辣','米饭'],'午晚',4.6,389,0,[[5,['味道好'],'微辣就很香，推荐加午餐肉和宽粉','大三·自动化','今天'],[4,['排队久'],'好吃但是饭点要排 15 分钟','大二·会计','2天前']]],
- [12,5,'寿喜肥牛锅',20,'🍲',['清淡','米饭'],'午晚',4.3,31,6,[[4,['味道好'],'不能吃辣的福音，甜口汤底配肥牛很下饭','大一·护理','2天前']]],
- [13,6,'鸡胸肉能量碗',16,'🥗',['清淡'],'午晚',4.4,142,0,[[5,['味道好'],'健身党食堂首选，鸡胸不柴','大四·体育','今天']]],
- [14,6,'牛油果虾仁沙拉',19,'🥑',['清淡'],'午晚',3.9,12,2,[[4,[],'食材新鲜，但 19 块在食堂有点贵','研一·生物','昨天'],[3,['分量少','价格虚高'],'虾只有四只……','大三·外语','今天']]],
- [15,7,'黑椒牛柳铁板饭',17,'🥩',['米饭'],'午晚',2.8,133,0,[[2,['太油','价格虚高'],'盘底一层油，牛柳全是淀粉','大二·软件','今天'],[2,['排队久'],'排了 15 分钟，上来是温的','大三·金融','2天前']]],
- [16,7,'铁板鱿鱼',15,'🦑',['辣'],'午晚',2.5,88,0,[[1,['不新鲜','太咸'],'鱿鱼有腥味，吃完下午闹肚子','大一·通信','昨天']]],
- [17,8,'蜜汁叉烧饭',15,'🍖',['米饭'],'午晚',4.8,276,0,[[5,['味道好','分量足'],'全校评分第一，12 点前去不然卖完','大四·建筑','今天'],[5,['味道好'],'肥瘦相间，酱汁拌饭绝了','大二·药学','昨天']]],
- [18,8,'烧鸭双拼饭',17,'🦆',['米饭'],'午晚',4.5,164,0,[[4,['味道好'],'鸭皮脆，就是偶尔骨头多','大三·统计','3天前']]],
- [19,9,'石锅拌饭',14,'🍲',['米饭','辣'],'午晚',4.3,198,0,[[4,['味道好'],'锅巴很香，辣酱可以自己加','大二·韩语','2天前']]],
- [20,9,'芝士年糕火锅',16,'🧀',['辣'],'晚',4.1,9,1,[[4,['味道好'],'昨天刚上，芝士量很足，适合两个人拼','大一·传媒','今天']]],
- [21,10,'酸菜鱼米线',13,'🐟',['辣','面食'],'午晚',4.5,233,0,[[5,['味道好','分量足'],'鱼片很嫩没有刺，酸菜够味','大三·环境','今天']]],
- [22,10,'菌菇鸡汤米线',12,'🍄',['清淡','面食'],'午晚',4.4,121,0,[[4,['味道好'],'感冒的时候来一碗，汤很鲜','研一·教育','4天前']]],
- [23,11,'三鲜水饺',10,'🥟',['面食','清淡'],'早午晚',4.3,175,0,[[4,['性价比高'],'10 块 15 个，手工包的','大二·哲学','3天前']]],
- [24,11,'红油抄手',9,'🥣',['辣','面食'],'午晚',4.2,96,0,[[4,['味道好'],'晚上十点还开着，夜宵首选','大三·微电子','昨天']]]
-].map(a=>({id:a[0],w:a[1],name:a[2],price:a[3],em:a[4],tags:a[5],meals:a[6],rate:a[7],cnt:a[8],newDays:a[9],seed:a[10].map(r=>({rate:r[0],tags:r[1],text:r[2],user:r[3],time:r[4]}))}));
-const DMAP = Object.fromEntries(DISHES.map(d=>[d.id,d]));
-const GOOD_TAGS=['味道好','分量足','性价比高','出餐快'];
-const BAD_TAGS=['排队久','分量少','太油','太咸','不新鲜','价格虚高'];
-
-/* ================= 本地存储（网页版与小程序版共享） ================= */
-const LS={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-const myReviews=()=>LS.get('cr_reviews',[]);
-const myWants=()=>LS.get('cr_wants',[]);
-
-/* ================= 计算 ================= */
-function reviewsOf(d){return myReviews().filter(r=>r.dish===d.id).concat(d.seed)}
-function dishStat(d){const u=myReviews().filter(r=>r.dish===d.id);const n=d.cnt+u.length;return{avg:(d.rate*d.cnt+u.reduce((s,r)=>s+r.rate,0))/n,n}}
-function winDishes(w){return DISHES.filter(d=>d.w===w.id)}
-function winStat(w){let s=0,n=0;winDishes(w).forEach(d=>{const t=dishStat(d);s+=t.avg*t.n;n+=t.n});return{avg:s/n,n}}
-function winReasons(w){const m={};(w.warn||[]).forEach(t=>m[t]=(m[t]||0)+3);winDishes(w).forEach(d=>reviewsOf(d).forEach(r=>r.tags.filter(t=>BAD_TAGS.includes(t)).forEach(t=>m[t]=(m[t]||0)+1)));return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,4).map(e=>e[0])}
-const isBadWin=w=>winStat(w).avg<3.3;
-function nowMeal(){const h=new Date().getHours();return h<10?'早':h<15?'午':'晚'}
-function crowd(c){const t=new Date().getHours()+new Date().getMinutes()/60;const g=(m,s)=>Math.exp(-((t-m)**2)/(2*s*s));const p=Math.max(g(12.1,.8),g(18,.9),.7*g(7.6,.6));return Math.min(.98,Math.max(.12,c.pop*(.25+.8*p)))}
-function crowdTxt(p){return p>.66?['拥挤','var(--bad)']:p>.38?['适中','var(--warn)']:['空闲','var(--good)']}
-function queue(w){return Math.max(1,Math.round(w.q*(.35+crowd(CANTEENS[w.c]))))}
-const rnd=x=>{const s=Math.sin(x*99.13)*43758.5453;return s-Math.floor(s)};
-const rc=v=>v>=4.2?'g':v>=3.3?'m':'b';
-const stars=v=>{const n=Math.round(v);return '<span class="stars">'+'★'.repeat(n)+'<i>'+'★'.repeat(5-n)+'</i></span>'};
-
-/* ================= 状态 ================= */
-const S={meal:nowMeal(),budget:0,taste:'',noQueue:false,seed:1,rank:'red',draft:{rate:0,tags:[]}};
-function candidates(){
-  let l=DISHES.filter(d=>d.meals.includes(S.meal)&&(!S.budget||d.price<=S.budget)&&(!S.taste||d.tags.includes(S.taste))&&!isBadWin(WIN[d.w]));
-  if(S.noQueue){const f=l.filter(d=>queue(WIN[d.w])<=5);if(f.length)l=f}
-  return l;
-}
-function recommend(){
-  return candidates().map(d=>{const q=queue(WIN[d.w]);return{d,q,s:dishStat(d).avg*20-(S.noQueue?q*3:q*.6)+(d.newDays?4:0)+rnd(d.id+S.seed*7.3)*16}}).sort((a,b)=>b.s-a.s).slice(0,3);
-}
-function whyText(d,q){const st=dishStat(d),w=WIN[d.w],c=CANTEENS[w.c];const a=[];
-  a.push(st.avg>=4.5?`口碑很稳，${st.n} 人评出 ${st.avg.toFixed(1)} 分`:`${st.n} 人评价 ${st.avg.toFixed(1)} 分`);
-  a.push(q<=4?`现在几乎不用排队（约 ${q} 分钟）`:`当前排队约 ${q} 分钟`);
-  if(S.budget)a.push(`在你 ${S.budget} 元预算内`);
-  if(d.newDays)a.push(`上新第 ${d.newDays} 天，早鸟评价不错`);
-  const top=reviewsOf(d)[0];if(top&&top.rate>=4)a.push(`同学说「${top.text.slice(0,16)}…」`);
-  return a.slice(0,3).join('；');
-}
-
-/* ================= 组件 ================= */
-const pic=d=>`<img src="img/${d.id}.jpg" alt="${d.name}">`;
-function dishCard(d,o={}){const st=dishStat(d),w=WIN[d.w],c=CANTEENS[w.c],q=queue(w);
-  return `<a class="card dish" href="#/dish/${d.id}">${o.rank?`<div class="rk ${o.rank<=3?'t':''}">${o.rank}</div>`:''}
-  <div class="tile">${pic(d)}</div><div class="bd">
-  <h3>${d.name} ${d.newDays?'<span class="tag new">新品</span>':''}${isBadWin(w)?'<span class="tag bad">避雷窗口</span>':''}</h3>
-  <div class="meta">${c.name} · ${w.name} · ${w.floor}</div>
-  <div class="row" style="margin-top:4px"><span class="price"><small>¥</small>${d.price}</span><span class="rate ${rc(st.avg)}">★ ${st.avg.toFixed(1)}</span><span class="meta">${st.n} 评 · 排队 ${q} 分钟</span></div>
-  </div></a>`}
-function chips(key,opts){return `<div class="chips">${opts.map(([v,t])=>`<button class="chip ${S[key]===v?'on':''}" data-act="set" data-k="${key}" data-v="${v}">${t}</button>`).join('')}</div>`}
-
-/* ================= 页面 ================= */
-const V={};
-V.home=()=>{
-  const h=new Date().getHours(),greet=h<10?'早上好':h<14?'中午好':h<18?'下午好':'晚上好';
-  const mealName={早:'早餐',午:'午餐',晚:'晚餐'}[S.meal];
-  const rec=recommend();
-  const bads=Object.values(WIN).filter(isBadWin).sort((a,b)=>winStat(a).avg-winStat(b).avg);
-  const news=DISHES.filter(d=>d.newDays).sort((a,b)=>a.newDays-b.newDays);
-  return `
-  <section class="hero">
-    <h1>${greet}，${mealName}吃什么？</h1>
-    <p>告诉我预算和口味，3 秒帮你决定，顺便避开踩雷窗口</p>
-    <div class="filters">
-      <div class="fl"><span>餐段</span>${chips('meal',[['早','早餐'],['午','午餐'],['晚','晚餐']])}</div>
-      <div class="fl"><span>预算</span>${chips('budget',[[0,'不限'],[10,'≤10元'],[15,'≤15元'],[20,'≤20元']])}</div>
-      <div class="fl"><span>口味</span>${chips('taste',[['','不限'],['辣','想吃辣'],['清淡','清淡'],['面食','面食'],['米饭','米饭']])}</div>
-      <div class="fl"><span>排队</span><div class="chips"><button class="chip ${!S.noQueue?'on':''}" data-act="toggleQ">无所谓</button><button class="chip ${S.noQueue?'on':''}" data-act="toggleQ">⏱ 不想排队</button></div></div>
-    </div>
-    <div class="cta"><button class="btn w" data-act="lucky">🎲 别纠结，帮我选一个</button>${MP?'':'<button class="btn k" data-act="phone">📱 打开 iPhone 真机体验小程序版</button>'}</div>
-  </section>
-  <section class="sec"><div class="sech"><h2>为你推荐</h2><button data-act="shuffle">↻ 换一批</button></div>
-    ${rec.length?`<div class="grid">${rec.map((r,i)=>`<div class="reco"><span class="no">TOP ${i+1}</span>${dishCard(r.d)}<div class="why">💡 ${whyText(r.d,r.q)}</div></div>`).join('')}</div>`:'<div class="card empty">这个条件下没有合适的菜，放宽一下预算或口味试试</div>'}
-  </section>
-  ${bads.length?`<section class="sec"><div class="alert"><h3>⚠️ 今日避雷提醒</h3><ul>${bads.map(w=>`<li><a href="#/win/${w.id}"><b>${CANTEENS[w.c].name} · ${w.name}</b>（${winStat(w).avg.toFixed(1)} 分）：${winReasons(w).slice(0,3).join('、')}${w.trend?' · '+w.trend:''} ›</a></li>`).join('')}</ul></div></section>`:''}
-  <section class="sec"><div class="sech"><h2>✨ 本周新品</h2><a href="#/new">全部 ›</a></div>
-    <div class="hscroll">${news.map(d=>{const st=dishStat(d);return `<a class="newc" href="#/dish/${d.id}"><div class="tile">${pic(d)}</div><h3>${d.name}</h3><div class="meta">${CANTEENS[WIN[d.w].c].name} · ¥${d.price}</div><div class="meta"><span class="rate ${rc(st.avg)}">★ ${st.avg.toFixed(1)}</span> · ${st.n} 人尝鲜</div></a>`}).join('')}</div>
-  </section>
-  <section class="sec"><div class="sech"><h2>食堂实时拥挤度</h2><a href="#/canteens">去逛食堂 ›</a></div>
-    <div class="card">${Object.values(CANTEENS).map(c=>{const p=crowd(c),[t,col]=crowdTxt(p);return `<a class="crowd" href="#/canteen/${c.id}"><span style="width:118px;flex:none">${c.em} ${c.name}</span><div class="bar"><i style="width:${Math.round(p*100)}%;background:${col}"></i></div><b style="color:${col}">${t}</b></a>`}).join('')}
-    <div class="meta" style="margin-top:10px">根据当前时间与历史客流估算，每分钟更新</div></div>
-  </section>`};
-
-V.rank=()=>{
-  const red=DISHES.slice().sort((a,b)=>dishStat(b).avg-dishStat(a).avg).slice(0,10);
-  const wins=Object.values(WIN).slice().sort((a,b)=>winStat(a).avg-winStat(b).avg);
-  const black=wins.filter(isBadWin);
-  const lowD=DISHES.slice().sort((a,b)=>dishStat(a).avg-dishStat(b).avg).slice(0,4);
-  return `<div class="tabs"><button class="${S.rank==='red'?'on':''}" data-act="set" data-k="rank" data-v="red">🏆 红榜 · 必吃</button><button class="${S.rank==='black'?'on':''}" data-act="set" data-k="rank" data-v="black">💣 黑榜 · 避雷</button></div>
-  ${S.rank==='red'?`<div class="meta" style="margin-bottom:10px">按全部同学评分排序，你的评价会实时计入</div><div class="grid">${red.map((d,i)=>dishCard(d,{rank:i+1})).join('')}</div>`
-  :`<div class="meta" style="margin-bottom:10px">综合评分低于 3.3 的窗口进入黑榜，并标出最集中的差评原因</div>
-   <div class="grid">${black.map(w=>winCard(w,true)).join('')||'<div class="card empty">目前没有上黑榜的窗口 🎉</div>'}</div>
-   <section class="sec"><div class="sech"><h2>评分最低的菜</h2></div><div class="grid">${lowD.map(d=>dishCard(d)).join('')}</div></section>`}`};
-
-function winCard(w,showWarn){const st=winStat(w),c=CANTEENS[w.c],bad=isBadWin(w);
-  return `<a class="card" href="#/win/${w.id}"><div class="winh"><div><h3>${w.name} ${bad?'<span class="tag bad">避雷</span>':''}</h3><div class="meta">${c.name} · ${w.floor} · 排队约 ${queue(w)} 分钟</div></div><div class="rate ${rc(st.avg)}" style="font-size:20px">${st.avg.toFixed(1)}</div></div>
-  <div class="reasons">${(bad||showWarn?winReasons(w).map(t=>`<span class="tag bad">${t}</span>`):w.tags.map(t=>`<span class="tag">${t}</span>`)).join('')}${w.trend&&bad?`<span class="tag bad">📉 ${w.trend}</span>`:''}</div>
-  <div class="meta" style="margin-top:8px">${winDishes(w).map(d=>d.name).join(' · ')}</div></a>`}
-
-V.new=()=>{const news=DISHES.filter(d=>d.newDays).sort((a,b)=>a.newDays-b.newDays);
-  return `<div class="card" style="background:#e9f8f0;margin-bottom:14px"><b>🧪 尝鲜榜</b><div class="meta" style="white-space:normal">新菜评价少，最需要第一批人反馈。吃过就评一句，帮后面的同学少踩一个雷。</div></div>
-  <div class="grid">${news.map(d=>{const st=dishStat(d);const few=st.n<20;return `<div>${dishCard(d)}<div class="why">${d.newDays<=1?'昨天刚上架':'上架第 '+d.newDays+' 天'} · 已有 ${st.n} 人尝鲜 · ${few?'<b style="color:var(--brand-d)">评价还很少，求测评</b>':'早鸟口碑 '+st.avg.toFixed(1)+' 分'}</div></div>`}).join('')}</div>`};
-
-V.canteens=()=>`<div class="grid">${Object.values(CANTEENS).map(c=>{const p=crowd(c),[t,col]=crowdTxt(p);const ws=Object.values(WIN).filter(w=>w.c===c.id);const bad=ws.filter(isBadWin).length;
-  return `<a class="card" href="#/canteen/${c.id}"><div class="winh"><div><h3>${c.em} ${c.name}</h3><div class="meta">${c.area} · ${c.hours}</div></div><span class="tag" style="color:${col};font-weight:700">${t}</span></div>
-  <div class="crowd"><div class="bar"><i style="width:${Math.round(p*100)}%;background:${col}"></i></div></div>
-  <div class="meta" style="margin-top:8px">${c.desc} · ${ws.length} 个窗口${bad?` · <span style="color:var(--bad)">${bad} 个避雷</span>`:''}</div></a>`}).join('')}</div>`;
-
-V.canteen=id=>{const c=CANTEENS[id];if(!c)return V.home();const ws=Object.values(WIN).filter(w=>w.c===c.id).sort((a,b)=>winStat(b).avg-winStat(a).avg);const p=crowd(c),[t,col]=crowdTxt(p);
-  return `<div class="crumb"><a href="#/canteens">食堂</a> / ${c.name}</div>
-  <div class="card"><h2>${c.em} ${c.name}</h2><div class="meta">${c.area} · 营业 ${c.hours}</div><div class="crowd"><span>当前</span><div class="bar"><i style="width:${Math.round(p*100)}%;background:${col}"></i></div><b style="color:${col}">${t}</b></div></div>
-  <section class="sec"><div class="sech"><h2>窗口（按口碑排序）</h2></div><div class="grid">${ws.map(w=>winCard(w)).join('')}</div></section>`};
-
-V.win=id=>{const w=WIN[id];if(!w)return V.home();const c=CANTEENS[w.c],st=winStat(w),bad=isBadWin(w);
-  return `<div class="crumb"><a href="#/canteens">食堂</a> / <a href="#/canteen/${c.id}">${c.name}</a> / ${w.name}</div>
-  <div class="card"><div class="winh"><div><h2>${w.name}</h2><div class="meta">${c.name} · ${w.floor}</div></div><div class="rate ${rc(st.avg)}" style="font-size:26px">${st.avg.toFixed(1)}</div></div>
-  <div class="stat3"><div><b>${st.n}</b><span>累计评价</span></div><div><b>${queue(w)} 分钟</b><span>当前排队</span></div><div><b>${winDishes(w).length}</b><span>在售菜品</span></div></div>
-  ${bad?`<div class="alert" style="margin-top:12px"><h3>⚠️ 该窗口在黑榜上</h3><div class="reasons">${winReasons(w).map(t=>`<span class="tag bad">${t}</span>`).join('')}</div>${w.trend?`<div class="meta" style="margin-top:6px">📉 ${w.trend}</div>`:''}</div>`:`<div class="reasons">${w.tags.map(t=>`<span class="tag hot">${t}</span>`).join('')}</div>`}</div>
-  <section class="sec"><div class="sech"><h2>菜品</h2></div><div class="grid">${winDishes(w).sort((a,b)=>dishStat(b).avg-dishStat(a).avg).map(d=>dishCard(d)).join('')}</div></section>`};
-
-V.dish=id=>{const d=DMAP[id];if(!d)return V.home();const w=WIN[d.w],c=CANTEENS[w.c],st=dishStat(d),rs=reviewsOf(d),want=myWants().includes(d.id);
-  const tagCount={};rs.forEach(r=>r.tags.forEach(t=>tagCount[t]=(tagCount[t]||0)+1));
-  return `<div class="crumb"><a href="#/canteen/${c.id}">${c.name}</a> / <a href="#/win/${w.id}">${w.name}</a> / ${d.name}</div>
-  <div class="detail"><div>
-   <div class="card"><div class="bigtile">${pic(d)}</div>
-    <div class="dtitle"><div><h1>${d.name}</h1><div class="meta"><a href="#/win/${w.id}" style="color:var(--brand-d)">${c.name} · ${w.name} · ${w.floor} ›</a></div></div><div class="price" style="font-size:24px"><small>¥</small>${d.price}</div></div>
-    <div class="row" style="margin-top:8px">${d.newDays?'<span class="tag new">新品 · 第 '+d.newDays+' 天</span>':''}${isBadWin(w)?'<span class="tag bad">所在窗口在黑榜</span>':''}${d.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-    <div class="stat3"><div><b class="rate ${rc(st.avg)}">${st.avg.toFixed(1)}</b><span>${st.n} 人评价</span></div><div><b>${queue(w)} 分钟</b><span>当前排队</span></div><div><b>${{早:'早',午:'午',晚:'晚'}[d.meals[0]]}${d.meals.length>1?'–'+d.meals.slice(-1):''}</b><span>供应餐段</span></div></div>
-    ${Object.keys(tagCount).length?`<div class="reasons">${Object.entries(tagCount).sort((a,b)=>b[1]-a[1]).map(([t,n])=>`<span class="tag ${BAD_TAGS.includes(t)?'bad':'hot'}">${t} ${n}</span>`).join('')}</div>`:''}
-    <button class="btn ${want?'':'ghost'} block" style="margin-top:14px" data-act="want" data-id="${d.id}">${want?'✓ 已加入想吃清单':'＋ 加入想吃清单'}</button>
-   </div>
-   <div class="card" style="margin-top:14px"><h3>写评价</h3><div class="meta">吃过就说一句，帮同学避雷</div>
-    <div class="pick" id="pick" style="margin-top:8px">${[1,2,3,4,5].map(i=>`<span data-act="star" data-v="${i}" class="${S.draft.rate>=i?'on':''}">★</span>`).join('')}</div>
-    <div class="row" style="margin-top:10px">${GOOD_TAGS.concat(BAD_TAGS).map(t=>`<button class="chip ${S.draft.tags.includes(t)?'on':''}" data-act="rtag" data-v="${t}">${t}</button>`).join('')}</div>
-    <textarea id="rtext" placeholder="味道、分量、排队情况……随便说说"></textarea>
-    <button class="btn block" data-act="submit" data-id="${d.id}">发布评价</button>
-   </div>
-  </div>
-  <div class="card"><h3>同学评价（${rs.length} 条精选）</h3>${rs.map(r=>`<div class="rv"><div class="u"><span>${r.mine?'🙋 我':'👤 '+r.user}</span><span>${r.time}</span></div><div>${stars(r.rate)} ${r.tags.map(t=>`<span class="tag ${BAD_TAGS.includes(t)?'bad':''}">${t}</span>`).join(' ')}</div><div style="margin-top:4px">${esc(r.text)}</div></div>`).join('')}</div>
-  </div>`};
-
-V.me=()=>{const rv=myReviews(),ws=myWants().map(i=>DMAP[i]).filter(Boolean);
-  return `<div class="card me"><div class="ava">🧑‍🎓</div><div><h2>同学你好</h2><div class="meta">已写 ${rv.length} 条评价 · 想吃 ${ws.length} 道菜</div></div></div>
-  <section class="sec"><div class="sech"><h2>想吃清单</h2></div>${ws.length?`<div class="grid">${ws.map(d=>dishCard(d)).join('')}</div>`:'<div class="card empty">还没有想吃的菜，去<a href="#/" style="color:var(--brand-d)">首页</a>逛逛</div>'}</section>
-  <section class="sec"><div class="sech"><h2>我的评价</h2>${rv.length?'<button data-act="clear">清空演示数据</button>':''}</div>${rv.length?`<div class="card">${rv.map(r=>`<a class="rv" style="display:block" href="#/dish/${r.dish}"><div class="u"><span>${DMAP[r.dish]?.name||''}</span><span>${r.time}</span></div><div>${stars(r.rate)} ${r.tags.map(t=>`<span class="tag">${t}</span>`).join(' ')}</div><div>${esc(r.text)}</div></a>`).join('')}</div>`:'<div class="card empty">吃过的菜评一句，榜单会实时变化</div>'}</section>
-  <section class="sec"><a class="card" style="display:block" href="#/about"><b>📐 产品设计思路</b><div class="meta">痛点、功能取舍与后续规划 ›</div></a></section>`};
-
-V.about=()=>`<div class="card about">
-  <h2>一、要解决的问题</h2>
-  <p>大学生每天两到三次面对「食堂吃什么」。信息其实都在同学嘴里，但没有沉淀下来，于是：</p>
-  <ul><li><b>决策成本高</b>：站在食堂门口转两圈，最后还是吃老三样。</li><li><b>踩雷靠运气</b>：哪个窗口手抖、哪个窗口菜是凉的，只能自己踩过才知道。</li><li><b>新菜没人知道</b>：窗口上了新品，没有渠道触达，也没人敢第一个吃。</li><li><b>排队不可见</b>：走到了才发现要排 15 分钟，下午还有课。</li></ul>
-  <h2>二、核心设计判断</h2>
-  <table><tr><th>判断</th><th>对应设计</th></tr>
-  <tr><td>学生要的是「答案」而不是「列表」</td><td>首页直接给 3 个推荐并写明理由，而不是先让人逛榜单；再加一个「帮我选一个」兜底。</td></tr>
-  <tr><td>食堂的最小决策单位是「窗口」而不是「餐厅」</td><td>数据结构为 食堂 → 窗口 → 菜品，避雷以窗口为粒度（同一食堂好坏窗口并存）。</td></tr>
-  <tr><td>避雷信息必须给出原因</td><td>黑榜不只给低分，还聚合差评标签（分量少、太油、不新鲜……）和近期趋势。</td></tr>
-  <tr><td>新品冷启动缺评价</td><td>独立的尝鲜榜，评价少的新菜标「求测评」，引导第一批反馈。</td></tr>
-  <tr><td>评价要 10 秒内写完</td><td>星级 + 一键标签为主，文字可选；发布后榜单与评分立即变化。</td></tr>
-  <tr><td>场景在路上、在排队时</td><td>同时提供小程序形态，网页版内可用 iPhone 真机直接体验。</td></tr></table>
-  <h2>三、功能结构</h2>
-  <ul><li><b>推荐</b>：按餐段、预算、口味、是否愿意排队筛选，黑榜窗口自动排除。</li><li><b>红黑榜</b>：红榜看必吃菜，黑榜看避雷窗口及原因。</li><li><b>新品</b>：本周上新 + 尝鲜人数 + 早鸟口碑。</li><li><b>食堂</b>：实时拥挤度、窗口口碑排序、菜品详情与评价。</li><li><b>我的</b>：想吃清单、我的评价。</li></ul>
-  <h2>四、推荐逻辑（当前版本）</h2>
-  <p>得分 = 菜品评分 × 权重 − 排队时间惩罚（勾选「不想排队」后加重）＋ 新品加成 ＋ 少量随机扰动（用于「换一批」）。命中黑榜窗口的菜直接过滤。每条推荐都把依据写成一句人话，让推荐可解释。</p>
-  <h2>五、后续规划</h2>
-  <ul><li>接入校园卡消费流水，用真实客流替代估算的排队时间。</li><li>评价带图、「今日实拍」，解决菜品图与实物不符。</li><li>AI 一句话点餐（「15 块以内、想吃辣、不排队」）与评价自动摘要。</li><li>食堂经营方后台：差评原因看板，形成反馈闭环。</li><li>防刷机制：校园身份认证 + 消费后才可评价。</li></ul>
-  <h2>六、关于这个演示</h2>
-  <p>当前为产品雏形，菜品与评价是模拟数据；你写的评价保存在本机浏览器，网页版与小程序版共享。全程使用 AI Coding 工具（Claude Code）完成设计、开发与部署。菜品照片来自 Wikimedia Commons 的自由许可图片，仅作示意，<a href="credits.html" style="color:var(--brand-d)">查看图片来源</a>。</p>
-</div>`;
-
-/* ================= 路由与渲染 ================= */
-const TABS=[['','推荐','🍚'],['rank','红黑榜','🏆'],['new','新品','✨'],['canteens','食堂','🏫'],['me','我的','🧑‍🎓']];
-const TITLES={'':'食堂吃什么',rank:'红黑榜',new:'本周新品',canteens:'食堂',me:'我的',about:'设计思路',canteen:'食堂详情',win:'窗口详情',dish:'菜品详情'};
-function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-function route(){const p=location.hash.replace(/^#\/?/,'').split('/');return{name:p[0]||'',id:+p[1]||0}}
-let lastRoute='';
-function render(keepScroll){
-  const r=route();const key=r.name+'/'+r.id;
-  if(key!==lastRoute){S.draft={rate:0,tags:[]}}
-  const fn={'':V.home,rank:V.rank,new:V.new,canteens:V.canteens,canteen:V.canteen,win:V.win,dish:V.dish,me:V.me,about:V.about}[r.name]||V.home;
-  const y=window.scrollY;
-  document.getElementById('app').innerHTML=fn(r.id);
-  const tabOf={canteen:'canteens',win:'canteens',dish:'',about:'me'}[r.name]??r.name;
-  document.getElementById('wnav').innerHTML=TABS.map(t=>`<a href="#/${t[0]}" class="${tabOf===t[0]&&r.name!=='about'?'on':''}">${t[1]}</a>`).join('')+`<a href="#/about" class="${r.name==='about'?'on':''}">设计思路</a>`;
-  document.getElementById('tabbar').innerHTML=TABS.map(t=>`<a href="#/${t[0]}" class="${tabOf===t[0]?'on':''}"><b>${t[2]}</b>${t[1]}</a>`).join('');
-  document.getElementById('mptitle').textContent=TITLES[r.name]||'食堂吃什么';
-  document.getElementById('mpback').style.display=TABS.some(t=>t[0]===r.name)?'none':'';
-  window.scrollTo(0,keepScroll&&key===lastRoute?y:0);
-  lastRoute=key;
-}
-function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),1800)}
-
-function lucky(){
-  const list=candidates();if(!list.length){toast('当前条件下没有可选的菜');return}
-  const m=document.createElement('div');m.className='modal';m.innerHTML='<div class="box"><div class="em" id="lem">🎲</div><h3 id="lname">正在帮你选…</h3><div class="meta" id="lmeta">&nbsp;</div><div id="lbtn" style="margin-top:16px"></div></div>';
-  document.body.appendChild(m);m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-x]'))m.remove()});
-  let i=0;const pickD=list[Math.floor(Math.random()*list.length)];
-  const tm=setInterval(()=>{const d=i<14?list[Math.floor(Math.random()*list.length)]:pickD;m.querySelector('#lem').innerHTML=pic(d);m.querySelector('#lname').textContent=d.name;
-    if(++i>14){clearInterval(tm);const w=WIN[d.w];m.querySelector('#lmeta').textContent=`${CANTEENS[w.c].name} · ${w.name} · ¥${d.price} · ★${dishStat(d).avg.toFixed(1)}`;
-      m.querySelector('#lbtn').innerHTML=`<a class="btn block" data-x href="#/dish/${d.id}">就吃这个</a><button class="btn ghost block" style="margin-top:8px" data-x data-act="lucky">再选一次</button>`}},90);
-}
-
-/* ---------- iPhone 真机演示 ---------- */
-function fitPhone(){const s=Math.min(1,(innerHeight-24)/868,(innerWidth-16)/414);const w=document.getElementById('phoneWrap');w.style.transform=`scale(${s})`}
-function openPhone(){const slot=document.getElementById('phoneSlot');slot.innerHTML='<iframe title="小程序版演示" src="'+location.pathname+'?mp=1&v=4#/"></iframe>';fitPhone();document.getElementById('phoneMask').classList.add('show');document.body.style.overflow='hidden'}
-function closePhone(){document.getElementById('phoneMask').classList.remove('show');document.getElementById('phoneSlot').innerHTML='';document.body.style.overflow='';render(true)}
-
-document.addEventListener('click',e=>{
-  const el=e.target.closest('[data-act]');if(!el)return;const a=el.dataset.act,v=el.dataset.v;
-  if(a==='set'){const k=el.dataset.k;S[k]=k==='budget'?+v:v;render(true)}
-  else if(a==='toggleQ'){S.noQueue=!S.noQueue;render(true)}
-  else if(a==='shuffle'){S.seed++;render(true);toast('已换一批')}
-  else if(a==='lucky'){lucky()}
-  else if(a==='back'){history.length>1?history.back():location.hash='#/'}
-  else if(a==='phone'){openPhone()}
-  else if(a==='phoneClose'){closePhone()}
-  else if(a==='star'){S.draft.rate=+v;document.querySelectorAll('#pick span').forEach(s=>s.classList.toggle('on',+s.dataset.v<=S.draft.rate))}
-  else if(a==='rtag'){const i=S.draft.tags.indexOf(v);i<0?S.draft.tags.push(v):S.draft.tags.splice(i,1);el.classList.toggle('on')}
-  else if(a==='want'){const id=+el.dataset.id,w=myWants(),i=w.indexOf(id);i<0?w.push(id):w.splice(i,1);LS.set('cr_wants',w);render(true);toast(i<0?'已加入想吃清单':'已移出想吃清单')}
-  else if(a==='submit'){
-    if(!S.draft.rate){toast('先点星星打个分吧');return}
-    const text=document.getElementById('rtext').value.trim()||(S.draft.rate>=4?'好吃，推荐':S.draft.rate<=2?'踩雷了，不推荐':'一般般');
-    const rv=myReviews();rv.unshift({dish:+el.dataset.id,rate:S.draft.rate,tags:S.draft.tags.slice(),text,time:'刚刚',mine:true,user:'我'});LS.set('cr_reviews',rv);
-    S.draft={rate:0,tags:[]};render(true);toast('评价已发布，评分和榜单已更新')}
-  else if(a==='clear'){LS.set('cr_reviews',[]);LS.set('cr_wants',[]);render();toast('已清空')}
-});
-window.addEventListener('hashchange',()=>render());
-window.addEventListener('resize',fitPhone);
-window.addEventListener('storage',()=>render(true)); // 另一端（网页/小程序）写入后同步
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closePhone()});
-function tick(){const d=new Date();document.getElementById('clock').textContent=d.getHours()+':'+String(d.getMinutes()).padStart(2,'0')}
-tick();setInterval(tick,20000);
-render();
-</script>
+<script>const BUILD=8;</script>
+<script src="data.js?v=8"></script>
+<script src="app.js?v=8"></script>
 </body>
 </html>
