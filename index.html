@@ -273,7 +273,7 @@ function whyText(d,q){const st=dishStat(d),w=WIN[d.w],c=CANTEENS[w.c];const a=[]
 }
 
 /* ================= 组件 ================= */
-const pic=d=>`<img src="img/${d.id}.jpg" alt="${d.name}" loading="lazy">`;
+const pic=d=>`<img src="img/${d.id}.jpg" alt="${d.name}">`;
 function dishCard(d,o={}){const st=dishStat(d),w=WIN[d.w],c=CANTEENS[w.c],q=queue(w);
   return `<a class="card dish" href="#/dish/${d.id}">${o.rank?`<div class="rk ${o.rank<=3?'t':''}">${o.rank}</div>`:''}
   <div class="tile">${pic(d)}</div><div class="bd">
@@ -435,7 +435,7 @@ function lucky(){
 
 /* ---------- iPhone 真机演示 ---------- */
 function fitPhone(){const s=Math.min(1,(innerHeight-24)/868,(innerWidth-16)/414);const w=document.getElementById('phoneWrap');w.style.transform=`scale(${s})`}
-function openPhone(){const slot=document.getElementById('phoneSlot');slot.innerHTML='<iframe title="小程序版演示" src="'+location.pathname+'?mp=1#/"></iframe>';fitPhone();document.getElementById('phoneMask').classList.add('show');document.body.style.overflow='hidden'}
+function openPhone(){const slot=document.getElementById('phoneSlot');slot.innerHTML='<iframe title="小程序版演示" src="'+location.pathname+'?mp=1&v=4#/"></iframe>';fitPhone();document.getElementById('phoneMask').classList.add('show');document.body.style.overflow='hidden'}
 function closePhone(){document.getElementById('phoneMask').classList.remove('show');document.getElementById('phoneSlot').innerHTML='';document.body.style.overflow='';render(true)}
 
 document.addEventListener('click',e=>{
